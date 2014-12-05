@@ -160,7 +160,7 @@ angular.module( 'multi-select', ['ng'] ).directive( 'multiSelect' , [ '$sce', '$
                     var gotData = false;
                     if ( typeof $scope.inputModel[ i ][ $scope.groupProperty ] === 'undefined' ) {                        
 
-                        if ( String( $scope.inputModel[ i ][ searchProperty ] ).toUpperCase().indexOf( $scope.inputLabel.labelFilter.toUpperCase() ) >= 0 ) {
+                        if ( String( $scope.inputModel[ i ][ $scope.searchProperty ] ).toUpperCase().indexOf( $scope.inputLabel.labelFilter.toUpperCase() ) >= 0 ) {
                             gotData == true;
                         }
                         if ( gotData === true ) {    
