@@ -166,7 +166,9 @@
 /* container of multi select items */
 .multiSelect .checkBoxContainer {
     display: inline-block;
-    padding: 8px;   
+    padding: 8px;
+	max-height: 173px;
+	overflow-y: scroll;
 }
 
 /* ! to show / hide the checkbox layer above */
