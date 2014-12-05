@@ -57,6 +57,7 @@ angular.module( 'multi-select', ['ng'] ).directive( 'multiSelect' , [ '$sce', '$
             selectionMode   : '@',            
                                                          
             // settings based on input model property 
+            searchProperty  : '@',
             tickProperty    : '@',
             disableProperty : '@',
             groupProperty   : '@',
@@ -159,13 +160,9 @@ angular.module( 'multi-select', ['ng'] ).directive( 'multiSelect' , [ '$sce', '$
                     var gotData = false;
                     if ( typeof $scope.inputModel[ i ][ $scope.groupProperty ] === 'undefined' ) {                        
 
-                        for (var key in $scope.inputModel[ i ] ) {
-                            // if filter string is in one of object property                            
-                            if ( typeof $scope.inputModel[ i ][ key ] !== 'boolean'  && String( $scope.inputModel[ i ][ key ] ).toUpperCase().indexOf( $scope.inputLabel.labelFilter.toUpperCase() ) >= 0 ) {
-                                gotData = true;
-                                break;
-                            }
-                        }                        
+                        if ( String( $scope.inputModel[ i ][ searchProperty ] ).toUpperCase().indexOf( $scope.inputLabel.labelFilter.toUpperCase() ) >= 0 ) {
+                            gotData == true;
+                        }
                         if ( gotData === true ) {    
                             // push
                             $scope.filteredModel.push( $scope.inputModel[ i ] );
