@@ -66,7 +66,10 @@ angular.module( 'multi-select', ['ng'] ).directive( 'multiSelect' , [ '$sce', '$
             // callbacks
             onClose         : '&',            
             onItemClick     : '&',
-            onOpen          : '&'                        
+            onOpen: '&',
+            //needed for wrapper
+            setParentDirty: '&',
+            setParentClean: '&'
         },
 
         template: 
@@ -653,6 +656,18 @@ angular.module( 'multi-select', ['ng'] ).directive( 'multiSelect' , [ '$sce', '$
 
             // select All / select None / reset buttons
             $scope.select = function( type, e ) {
+
+                //needed for wrapper
+                if ($scope.setParentDirty
+                    && (type == 'all' || type == 'none')) {
+
+                    $scope.setParentDirty();
+
+                } else if ($scope.setParentClean
+                            && type == 'reset') {
+
+                        $scope.setParentClean();
+                    }
 
                 helperIndex = helperItems.indexOf( e.target );
                 $scope.tabIndex = helperIndex;
